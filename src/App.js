@@ -1,26 +1,146 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import logo from './boba_logo.jpg';
 import './App.css';
+import Boba from './components/Boba.js';
+import Cart from './components/Cart.js';
+import strawberry from './strawberry.jpg';
+import mango from './mango.jpg';
+import lychee from './lychee.jpg';
+import matcha from './matcha.jpg';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			products: [],
+			total: 0,
+			cart: []
+		}
+		this.handler = this.handler.bind(this);
+		this.handleCart = this.handleCart.bind(this);
+	}
+
+	handler = (item) => {
+		this.state.cart = item;
+		this.setState({
+			cart : this.state.cart
+		});
+	}
+
+	clearCart = () => {
+		localStorage.removeItem('cart');
+		this.setState({cart: !this.state.cart});
+		console.log('Clear cart was called in the App.js parent component');
+	}
+
+	handleCart = (item, total) => {
+		this.state.cart = item;
+		console.log("Total: "+total);
+		console.log(this.state.cart);
+		this.setState({
+			cart: this.state.cart,
+			total: total.toFixed(2)
+		});
+	}
+
+	componentDidMount() {
+		const products = [
+		  {
+		    id: 0,
+		    name: 'Strawberry Milk Tea',
+		    available_quantity: 5,
+		    price: 5.49,
+		    description: 'Strawberry Milk Tea with classic and strawberry boba balls.',
+				image: strawberry,
+				quantity: 0
+		  },
+			{
+		    id: 1,
+		    name: 'Mango Milk Tea',
+		    available_quantity: 3,
+		    price: 3.49,
+		    description: 'Mango Milk Tea infused with dragonfruit and orange flavors.',
+				image: mango,
+				quantity: 0
+		  },
+			{
+		    id: 2,
+		    name: 'Lychee Milk Tea',
+		    available_quantity: 8,
+		    price: 2.49,
+		    description: 'Specialty Lychee Milk Tea with fresh chewy boba balls.',
+				image: lychee,
+				quantity: 0
+		  },
+			{
+		    id: 3,
+		    name: 'Matcha Milk Tea',
+		    available_quantity: 4,
+		    price: 7.49,
+		    description: 'Specialty Matcha Milk Tea with hints of chai and nutmeg.',
+				image: matcha,
+				quantity: 0
+		  }
+		];
+
+		this.setState({
+			products: products
+		})
+  }
+
+
+  render () {
+		return (
+	    <div className="App" style={{backgroundColor: "lavender"}}>
+	      <nav className="navbar box" role="navigation" aria-label="main navigation" style={{backgroundColor: "white"}}>
+						<div>
+							<a className="" href="/">
+								<img src={logo} width="150" alt="logo"/>
+							</a>
+							<a role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
+					      <span aria-hidden="true"></span>
+					      <span aria-hidden="true"></span>
+					      <span aria-hidden="true"></span>
+					    </a>
+						</div>
+					<div id="navbarMenu" className="navbar-menu">
+			    <div className="navbar-start">
+			      <a className="navbar-item" href="/">
+			        Home
+			      </a>
+
+			      <a className="navbar-item" href="/about">
+			        About Us
+			      </a>
+			    </div>
+
+			    <div className="navbar-end">
+			      <div className="navbar-item">
+			        <div className="buttons">
+			          <a className="fa fonta fa-facebook"></a>
+			          <a className="fa fonta fa-twitter" href="https://twitter.com/jordan_xib"></a>
+								<a className="fa fonta fa-instagram" href="https://www.instagram.com/jordan.xib/"></a>
+			        </div>
+			      </div>
+			    </div>
+			  </div>
+	      </nav>
+				<div className="tile is-ancestor" style={{marginLeft: "15px", marginRight: "1px"}}>
+					<div className="tile is-parent is-7">
+						<div className="tile is-child box">
+							<Boba product={this.state.products} handler={this.handler}/>
+						</div>
+					</div>
+					<div className="tile is-parent">
+						<div className="tile is-child box">
+							<Cart product={this.state.cart} handler={this.handleCart} total={this.state.total} clear={this.clearCart}/>
+						</div>
+					</div>
+				</div>
+	    </div>
+	  );
+	}
 }
 
 export default App;
