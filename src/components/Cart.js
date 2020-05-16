@@ -3,6 +3,7 @@ import CartItem from './CartItem';
 import strawberry from '../strawberry.jpg';
 import mango from '../mango.jpg';
 import lychee from '../lychee.jpg';
+import matcha from '../matcha.jpg';
 
 export default class Cart extends Component {
 	constructor(props) {
@@ -60,7 +61,16 @@ export default class Cart extends Component {
 		    description: 'Specialty Lychee Milk Tea with fresh chewy boba balls.',
 				image: lychee,
 				quantity: 0
-			}
+			},
+			{
+				id: 3,
+		    name: 'Matcha Milk Tea',
+		    available_quantity: 4,
+		    price: 7.49,
+		    description: 'Specialty Matcha Milk Tea with hints of chai and nutmeg.',
+				image: matcha,
+				quantity: 0
+		  }
 		];
 		let total = 0;
 		var tmp = [];
@@ -112,6 +122,22 @@ export default class Cart extends Component {
 				quantity: qty
 			});
 			total += 2.49 * qty;
+		}
+		if (cart[3] >= 1) {
+			qty = 0;
+			for (var l = 0; l < cart[3]; l++) {
+				qty++;
+			}
+			tmp.push({
+				id: 3,
+		    name: 'Matcha Milk Tea',
+		    available_quantity: 4,
+		    price: 7.49,
+		    description: 'Specialty Matcha Milk Tea with hints of chai and nutmeg.',
+				image: matcha,
+				quantity: qty
+			});
+			total += 7.49 * qty;
 		}
 		this.setState({
 			cart: tmp

@@ -8,7 +8,7 @@ export default class CartItem extends Component {
 	render() {
 		const { product } = this.props;
 		return (
-			<div className="box" style={{width: "40%", flex: "wrap", padding: "10px", marginRight: "10px"}}>
+			<div className="box" style={{flex: "wrap", marginRight: "10px"}}>
 				<div className="tile is-ancestor" style={{padding: "10px"}}>
 					<div className="tile is-parent is-vertical">
 						<img src={product.image} style={{width: "50%"}}/>
