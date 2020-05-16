@@ -4,6 +4,8 @@ import strawberry from '../strawberry.jpg';
 import mango from '../mango.jpg';
 import lychee from '../lychee.jpg';
 import matcha from '../matcha.jpg';
+import { createBrowserHistory as history } from 'history';
+import { Router, Route, Link } from 'react-router-dom';
 
 export default class Cart extends Component {
 	constructor(props) {
@@ -12,6 +14,7 @@ export default class Cart extends Component {
 		this.state = { cart: [] }
 
 		this.loadCart = this.loadCart.bind(this);
+		this.checkout = this.checkout.bind(this);
 	}
 
 	componentDidMount() {
@@ -28,6 +31,11 @@ export default class Cart extends Component {
 		} else {
 			this.loadCart();
 		}
+	}
+
+	checkout = () => {
+		 history.push('/checkout');
+
 	}
 
 
@@ -207,6 +215,13 @@ export default class Cart extends Component {
 					''
 				}
 				<div className="button is-danger" onClick={this.clearCart}>Clear Cart</div>
+				{this.props.product.length ?
+					<div style={{marginLeft: "10px"}} className="button is-link">
+						<Link style={{color: "white"}} to={{pathname: "/checkout", state: { payload: this.state.cart, final: this.props.total } }} >Check Out </Link>
+					</div>
+					:
+					''
+				}
 			</div>
 		)
 	};

@@ -7,6 +7,7 @@ import strawberry from './strawberry.jpg';
 import mango from './mango.jpg';
 import lychee from './lychee.jpg';
 import matcha from './matcha.jpg';
+import Checkout from './components/Checkout.js';
 
 class App extends Component {
 	constructor(props) {
