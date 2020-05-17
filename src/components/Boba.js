@@ -24,6 +24,8 @@ class Boba extends Component {
 							product={product}
 							key={index}
 							onAdd={this.props.handler}
+							cart={this.props.cart}
+							onRemove={this.props.handleCart}
 						/>
 			    );
 				})}

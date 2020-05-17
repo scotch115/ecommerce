@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from '../boba_logo.jpg';
 import CheckoutItem from './CheckoutItem.js';
-import { Router, Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 class Checkout extends Component {
 	constructor(props) {
@@ -15,7 +15,6 @@ class Checkout extends Component {
 	}
 
 	removeFromCheckoutCart = (product) => {
-		let id = product.id;
 		let cart = this.state.items;
 		console.log(cart);
 		product.qty -= 1;
@@ -36,7 +35,7 @@ class Checkout extends Component {
 
 	render() {
 		return(
-			<div>
+			<div style={{backgroundColor: "lavender"}}>
 				<nav className="navbar box" role="navigation" aria-label="main navigation" style={{backgroundColor: "white"}}>
 						<div>
 							<a className="" href="/">

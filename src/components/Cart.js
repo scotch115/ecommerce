@@ -42,44 +42,6 @@ export default class Cart extends Component {
 	loadCart() {
 		let cart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : {};
 		if (!cart) return;
-		const products = [
-			{
-				id: 0,
-				name: 'Strawberry Milk Tea',
-				available_quantity: 5,
-				price: 5.49,
-				description: 'Strawberry Milk Tea with fresh chewy boba balls.',
-				image: strawberry,
-				quantity: 0
-			},
-			{
-				id: 1,
-				name: 'Mango Milk Tea',
-				available_quantity: 3,
-				price: 5.49,
-				description: 'Mango Milk Tea with fresh chewy boba balls.',
-				image: mango,
-				quantity: 0
-			},
-			{
-				id: 2,
-		    name: 'Lychee Milk Tea',
-		    available_quantity: 8,
-		    price: 2.49,
-		    description: 'Specialty Lychee Milk Tea with fresh chewy boba balls.',
-				image: lychee,
-				quantity: 0
-			},
-			{
-				id: 3,
-		    name: 'Matcha Milk Tea',
-		    available_quantity: 4,
-		    price: 7.49,
-		    description: 'Specialty Matcha Milk Tea with hints of chai and nutmeg.',
-				image: matcha,
-				quantity: 0
-		  }
-		];
 		let total = 0;
 		var tmp = [];
 		var qty = 0;
