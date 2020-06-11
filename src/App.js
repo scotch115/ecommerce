@@ -84,8 +84,8 @@ class App extends Component {
 
   render () {
 		return (
-	    <div style={{backgroundColor: "lavender"}}>
-	      <nav className="navbar box" role="navigation" aria-label="main navigation" style={{backgroundColor: "white"}}>
+	    <div style={{backgroundColor: "rgb(160, 167, 188)"}}>
+	      <nav className="navbar" role="navigation" aria-label="main navigation" style={{backgroundColor: "white", padding: "10px", marginBottom: "25px"}}>
 						<div>
 							<a className="" href="/">
 								<img src={logo} width="150" alt="logo"/>
@@ -120,12 +120,12 @@ class App extends Component {
 	      </nav>
 				<div className="tile is-ancestor" style={{marginLeft: "15px", marginRight: "1px"}}>
 					<div className="tile is-parent is-7">
-						<div className="tile is-child box">
+						<div className="tile is-child box" style={{backgroundColor: "white", padding: "10px"}}>
 							<Boba product={this.state.products} cart={this.state.cart} remove={this.handleCart} handler={this.handler}/>
 						</div>
 					</div>
 					<div className="tile is-parent">
-						<div className="tile is-child box" style={{height: "200px"}}>
+						<div className="tile is-child box" style={{height: "200px", backgroundColor: "white", padding: "10px", position: "sticky", top: 120}}>
 							<Cart product={this.state.cart} handler={this.handleCart} total={this.state.total} clear={this.clearCart}/>
 						</div>
 					</div>

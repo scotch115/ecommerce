@@ -4,7 +4,7 @@ import strawberry from '../strawberry.jpg';
 import mango from '../mango.jpg';
 import lychee from '../lychee.jpg';
 import matcha from '../matcha.jpg';
-import { createBrowserHistory as history } from 'history';
+// import { createBrowserHistory as history } from 'history';
 import { Router, Route, Link } from 'react-router-dom';
 
 export default class Cart extends Component {
@@ -34,7 +34,7 @@ export default class Cart extends Component {
 	}
 
 	checkout = () => {
-		 history.push('/checkout');
+		 // history.push('/checkout');
 
 	}
 
