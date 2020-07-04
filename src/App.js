@@ -104,8 +104,8 @@ class App extends Component {
 
   render () {
 		return (
-	    <div style={{backgroundColor: "lavender"}}>
-	      <nav className="navbar box" role="navigation" aria-label="main navigation" style={{backgroundColor: "white"}}>
+	    <div style={{backgroundColor: "rgb(160, 167, 188)"}}>
+	      <nav className="navbar" role="navigation" aria-label="main navigation" style={{backgroundColor: "white", padding: "10px", marginBottom: "25px"}}>
 						<div>
 							<a className="" href="/">
 								<img src={logo} width="150" alt="logo"/>
@@ -140,6 +140,7 @@ class App extends Component {
 	      </nav>
 				<div className="tile is-ancestor" style={{marginLeft: "15px", marginRight: "1px"}}>
 					<div className="tile is-parent is-7">
+<<<<<<< HEAD
 						<div className="tile is-child box">
 							<Boba product={this.state.products} remove={this.removeFromCart} cart={this.state.cart} remove={this.removeFromCart} total={this.state.total} handler={this.handler}/>
 						</div>
@@ -147,6 +148,15 @@ class App extends Component {
 					<div className="tile is-parent">
 						<div className="tile is-child box" style={{height: "200px"}}>
 							<Cart product={this.state.cart} remove={this.removeFromCart} handler={this.handleCart} total={this.state.total} clear={this.clearCart}/>
+=======
+						<div className="tile is-child box" style={{backgroundColor: "white", padding: "10px"}}>
+							<Boba product={this.state.products} cart={this.state.cart} remove={this.handleCart} handler={this.handler}/>
+						</div>
+					</div>
+					<div className="tile is-parent">
+						<div className="tile is-child box" style={{height: "200px", backgroundColor: "white", padding: "10px", position: "sticky", top: 120}}>
+							<Cart product={this.state.cart} handler={this.handleCart} total={this.state.total} clear={this.clearCart}/>
+>>>>>>> 7ecde60c1db6058c005501559f7735747f519ed3
 						</div>
 					</div>
 				</div>
