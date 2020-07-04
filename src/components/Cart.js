@@ -4,7 +4,7 @@ import strawberry from '../strawberry.jpg';
 import mango from '../mango.jpg';
 import lychee from '../lychee.jpg';
 import matcha from '../matcha.jpg';
-import { createBrowserHistory as history } from 'history';
+// import { createBrowserHistory as history } from 'history';
 import { Router, Route, Link } from 'react-router-dom';
 
 export default class Cart extends Component {
@@ -34,7 +34,7 @@ export default class Cart extends Component {
 	}
 
 	checkout = () => {
-		 history.push('/checkout');
+		 // history.push('/checkout');
 
 	}
 
@@ -115,21 +115,6 @@ export default class Cart extends Component {
 		this.props.handler(tmp, total);
 	}
 
-	removeFromCart = (product) => {
-		let cart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : {};
-		let id = product.id;
-		cart[id] = (cart[id] ? cart[id]: 0);
-		let qty = cart[id] - 1;
-		if (qty < 0) { qty = 0 };
-		if (product.available_quantity < qty) {
-			cart[id] = product.available_quantity;
-		} else {
-			cart[id] = qty;
-		}
-		localStorage.setItem('cart', JSON.stringify(cart));
-		this.loadCart();
-	}
-
 	clearCart = () => {
 		this.props.clear();
 		console.log('Clear cart was called in the Cart.js component');
@@ -144,13 +129,15 @@ export default class Cart extends Component {
 				<div className="card-title title is-3">
 					Cart
 				</div>
-				<div className="tile" style={{flexWrap: "wrap"}}>
+				<div> {this.state.cart == 0
+				? "Cart is empty!"
+				: <div className="tile" style={{flexWrap: "wrap"}}>
 				{this.props.product == 'undefined'
 					? this.state.product.map((product) => {
 					return(
 						<CartItem
 							product={product}
-							remove={this.removeFromCart}
+							remove={this.props.remove}
 							key={product.id}
 							/>
 					)
@@ -159,16 +146,18 @@ export default class Cart extends Component {
 					return(
 						<CartItem
 							product={product}
-							remove={this.removeFromCart}
+							remove={this.props.remove}
 							key={product.id}
 						/>
 					)
 				})
 			}
+					</div>
+				}
 				</div>
-				<br />
 				<hr />
-				{this.props.product.length ?
+				{this.props.product.length
+					?
 					<div>
 						<div className="title is-3">Total Amount:</div>
 						<p>${this.props.total}</p>

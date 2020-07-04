@@ -57,7 +57,7 @@ class ProductItem extends Component {
 							<p>${product.price}</p>
 							{(cart[id] < product.available_quantity) || (cart[id] == null) ?
 								<p>
-									{cart[id] == null || (cart[id] == 0) ? '' : <a className="fa minus fa-minus" style={{margin: "auto"}} onClick={this.removeFromCart} style={{backgroundColor: "black", color: "white"}}></a> }
+									{cart[id] == null || (cart[id] == 0) ? '' : <a className="fa minus fa-minus" style={{margin: "auto"}} onClick={() => this.props.onRemove(product)} style={{backgroundColor: "black", color: "white"}}></a> }
 									{(cart[id] == null) || (cart[id] == 0) ? ' ' : cart[id]}
 									{ (cart[id] == null) || (cart[id] == 0) ? <a className="button is-success" style={{margin: "auto"}} onClick={this.addToCart} style={{color: "white"}}>Add to Cart</a> : <a className="fa plus fa-plus" onClick={this.addToCart} style={{backgroundColor: "black", color: "white"}}></a> }
 								</p>

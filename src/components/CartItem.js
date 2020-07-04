@@ -7,6 +7,8 @@ export default class CartItem extends Component {
 
 	render() {
 		const { product } = this.props;
+		let id = product.id.toString();
+		let cart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : {};
 		return (
 			<div className="box" style={{flex: "wrap", marginRight: "10px"}}>
 				<div className="tile is-ancestor" style={{padding: "10px"}}>
@@ -14,7 +16,7 @@ export default class CartItem extends Component {
 						<img src={product.image} style={{width: "50%"}}/>
 						<div style={{fontSize: "20px"}}>{product.name}</div>
 						<p>${product.price}</p>
-						<p>Quantity: {product.quantity}</p>
+						<p>Quantity: {(cart[id] == null) ? ' ' : cart[id]}</p>
 						<div className="button is-link" onClick={() => this.props.remove(product)}>Remove</div>
 					</div>
 				</div>

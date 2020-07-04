@@ -77,7 +77,27 @@ class App extends Component {
 		console.log(this.state.cart);
 		this.setState({
 			cart: this.state.cart,
-			total: total.toFixed(2)
+			total: (total != null ? total.toFixed(2) : 0.00)
+		});
+	}
+
+
+
+	removeFromCart = (product) => {
+		let cart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : {};
+		let id = product.id;
+		cart[id] = (cart[id] ? cart[id]: 0);
+		let qty = cart[id] - 1;
+		if (qty < 0) { qty = 0 };
+		if (product.available_quantity < qty) {
+			cart[id] = product.available_quantity;
+		} else {
+			cart[id] = qty;
+		}
+		localStorage.setItem('cart', JSON.stringify(cart));
+		// this.loadCart();;
+		this.setState({
+			cart: cart
 		});
 	}
 
@@ -121,12 +141,12 @@ class App extends Component {
 				<div className="tile is-ancestor" style={{marginLeft: "15px", marginRight: "1px"}}>
 					<div className="tile is-parent is-7">
 						<div className="tile is-child box">
-							<Boba product={this.state.products} cart={this.state.cart} remove={this.handleCart} handler={this.handler}/>
+							<Boba product={this.state.products} remove={this.removeFromCart} cart={this.state.cart} remove={this.removeFromCart} total={this.state.total} handler={this.handler}/>
 						</div>
 					</div>
 					<div className="tile is-parent">
 						<div className="tile is-child box" style={{height: "200px"}}>
-							<Cart product={this.state.cart} handler={this.handleCart} total={this.state.total} clear={this.clearCart}/>
+							<Cart product={this.state.cart} remove={this.removeFromCart} handler={this.handleCart} total={this.state.total} clear={this.clearCart}/>
 						</div>
 					</div>
 				</div>
