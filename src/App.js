@@ -130,7 +130,7 @@ class App extends Component {
 			    <div className="navbar-end">
 			      <div className="navbar-item">
 			        <div className="buttons">
-			          <a className="fa fonta fa-facebook"></a>
+			          <a className="fa fonta fa-facebook" href="https://jordangamache.io"></a>
 			          <a className="fa fonta fa-twitter" href="https://twitter.com/jordan_xib"></a>
 								<a className="fa fonta fa-instagram" href="https://www.instagram.com/jordan.xib/"></a>
 			        </div>

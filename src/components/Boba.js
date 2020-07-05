@@ -26,7 +26,6 @@ class Boba extends Component {
 						/>
 			    );
 				})}
-				<hr />
 			</div>
 		)
   }
