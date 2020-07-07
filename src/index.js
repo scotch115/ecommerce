@@ -7,6 +7,7 @@ import { Route, Link, BrowserRouter as Router } from 'react-router-dom';
 import Checkout from './components/Checkout.js';
 import Landing from './components/Landing.js';
 import About from './components/About.js';
+import CheckoutPage from "./components/CheckoutPage.js";
 
 const routing = (
 	<Router>
@@ -15,6 +16,7 @@ const routing = (
 			<Route path="/about" component={About} />
 			<Route path="/checkout" component={Checkout} />
 			<Route path="/landing" component={Landing} />
+			<Route path="/checkoutpage" component={CheckoutPage} />
 		</div>
 	</Router>
 )

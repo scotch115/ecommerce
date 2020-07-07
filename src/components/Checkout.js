@@ -93,7 +93,7 @@ class Checkout extends Component {
 							<Link style={{color: "white"}} to="/landing"> Check Out with PayPal </Link>
 						</div>
 						<div className="button " style={{margin: "10px", backgroundColor: "darkOrange", color: "white"}}>
-							<Link style={{color: "white"}} to="/landing"> Check Out as Guest </Link>
+							<Link style={{color: "white"}} to={{ pathname: "/checkoutpage", state: { payload: this.state.total} }}> Check Out as Guest </Link>
 						</div>
 					</div>
 				</div>
